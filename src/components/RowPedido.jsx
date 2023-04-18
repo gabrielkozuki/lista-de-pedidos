@@ -1,11 +1,13 @@
 import './RowPedido.css'
 import { useState, useEffect} from 'react'
+import { useNavigate } from "react-router-dom";
 
 import { fetchAPI, getProdutos } from '../api'
 
 const Row = ({ id, data, id_cliente }) => {
   const [cliente, setCliente] = useState({})
   const [valorTotal, setValorTotal] = useState([])
+  const navigateTo = useNavigate()
 
   const getCliente = async() => {
     try {
@@ -39,13 +41,17 @@ const Row = ({ id, data, id_cliente }) => {
     }
   }
 
+  const handleRowClick = () => {
+    navigateTo(`/pedido/${id}`)
+  }
+
   useEffect(() => {
     getCliente()
     calcularValorTotal()
   }, [])
 
   return (
-    <tr>
+    <tr onClick={()=> handleRowClick()}>
       <td>{id}</td>
       <td>{cliente.nome}</td>
       <td>{data.replaceAll('-', '/')}</td>
