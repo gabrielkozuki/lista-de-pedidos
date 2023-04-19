@@ -2,28 +2,23 @@ import './List.css'
 import { useState, useEffect } from 'react'
 import { Container, Table } from 'react-bootstrap'
 
-import { fetchAPI } from '../api'
+import { getList } from '../api'
 import RowPedido from '../components/RowPedido'
 
 const List = () => {
   const [pedidos, setPedidos] = useState([])
 
-  const getPedidos = async() => {
-    try {
-      const res = await fetchAPI('/Pedidos')
-      setPedidos(res)
-
-    } catch (err){
-      console.error('error getPedidos:' , err);
-    }
+  const listarPedidos = async () => {
+    let res = await getList()
+    setPedidos(res)
   }
 
   useEffect(() => {
-    getPedidos()
+    listarPedidos()
   }, [])
 
   return (
-    <div className='list-container'>
+    <div className='list'>
       <Container>
         <h1>Lista de Pedidos</h1>
         <Table striped bordered hover size="sm">
@@ -36,16 +31,20 @@ const List = () => {
             </tr>
           </thead>
           <tbody>
-            {pedidos?.map((pedido) => {
-              return (
-                <RowPedido 
-                  key={pedido.id} 
+            {!pedidos ? (
+              <tr>
+                <td colSpan="4">Carregando...</td>
+              </tr>
+            ) : (
+              pedidos.map((pedido) => (
+                <RowPedido
+                  key={pedido.id}
                   id={pedido.id}
                   data={pedido.data}
                   id_cliente={pedido.cliente}
                 />
-              )
-            })}
+              ))
+            )}
           </tbody>
         </Table>
       </Container>
