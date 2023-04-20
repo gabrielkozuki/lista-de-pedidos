@@ -54,7 +54,7 @@ export const getRowPedido = async(id_pedido, id_cliente) => {
     const produtos = await getProdutos(id_pedido)
     const vt = calcularValorTotal(produtos)
 
-    return { nome: cliente.nome, valorTotal: vt}
+    return { pedido: id_pedido, nome: cliente.nome, valorTotal: vt}
 
   } catch (err){
     console.error('error in getRowPedido:' , err);
