@@ -1,0 +1,17 @@
+.container {
+  margin-top: 5rem;
+}
+
+.container h1 {
+  font-size: 1.7rem;
+  margin-bottom: 1rem;
+}
+
+.container h2 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.container table thead th {
+  background-color: rgb(226, 226, 226);
+}

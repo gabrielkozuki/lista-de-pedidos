@@ -32,7 +32,7 @@ const Pedido = () => {
           <h1>ID: {id}</h1>
         </div>
 
-        <Table striped bordered hover size="sm" className='dados-cliente'>
+        <Table size="md" className='dados-cliente'>
           <thead>
             <tr>
               <th>Dados do Cliente</th>
@@ -61,12 +61,12 @@ const Pedido = () => {
         </Table>
 
         <h2>Itens do Pedido</h2>
-        <Table striped bordered hover size="sm">
+        <Table bordered size="md">
           <thead>
             <tr>
               <th>Código</th>
               <th>Produto</th>
-              <th>Data</th>
+              <th>Quantidade</th>
               <th>Valor</th>
             </tr>
           </thead>
@@ -93,10 +93,10 @@ const Pedido = () => {
         </Table>
 
         <div className="row-total">
-          {dados ? (
-            <h2>Total: {formatter.format(dados.valorTotal)}</h2>
+          {dados.valorTotal ? (
+            <h1>Total: {formatter.format(dados.valorTotal)}</h1>
           ) : (
-            <h2>Carregando...</h2>
+            <h1>Total: carregando...</h1>
           )}
         </div>
       </Container>

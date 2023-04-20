@@ -38,7 +38,7 @@ const List = () => {
     <div className='list'>
       <Container>
         <h1>Lista de Pedidos</h1>
-        <Table striped bordered hover size="sm">
+        <Table bordered hover size="md">
           <thead>
             <tr>
               <th>Pedido</th>

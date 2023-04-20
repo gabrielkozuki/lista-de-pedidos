@@ -1,0 +1,21 @@
+.info-pedido .row-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.info-pedido .dados-cliente {
+  border: 1px solid;
+  border-color: #dee2e6 !important;
+
+  margin-bottom: 2.5rem;
+}
+
+.info-pedido .dados-cliente th, .info-pedido .dados-cliente td {
+  border: none;
+}
+
+.row-total {
+  display: flex;
+  flex-direction: row-reverse;
+}
